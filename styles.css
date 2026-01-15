@@ -1,0 +1,274 @@
+/* Lofi Radio Widget Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 整个小部件可拖拽 */
+.widget {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 15px;
+    overflow: hidden;
+
+    /* 毛玻璃效果 */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* 阴影效果 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    /* 窗口拖拽 */
+    -webkit-app-region: drag;
+    position: relative;
+}
+
+/* 封面区域 */
+.cover-section {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+/* 黑胶唱片样式 */
+.vinyl-record {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: spin 4s linear infinite;
+    animation-play-state: paused; /* 默认暂停 */
+}
+
+.vinyl-record.playing {
+    animation-play-state: running;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.record-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.record-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #8B4513, #654321);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.label-text {
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.record-grooves {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        transparent 0deg 2deg,
+        rgba(255, 255, 255, 0.1) 2deg 4deg
+    );
+}
+
+/* 艺术家信息 */
+.artist-info {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.artist-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.track-title {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* 控制区域 */
+.controls-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 15px 15px;
+    gap: 15px;
+}
+
+/* 播放/暂停按钮 */
+.control-btn {
+    -webkit-app-region: no-drag; /* 按钮区域不可拖拽 */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.control-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: rgba(255, 255, 255, 0.9);
+}
+
+/* 音量控制 */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    -webkit-app-region: no-drag;
+}
+
+.volume-icon {
+    width: 18px;
+    height: 18px;
+    fill: rgba(255, 255, 255, 0.7);
+}
+
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    background: #fff;
+}
+
+/* 关闭按钮 */
+.close-btn {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.close-btn:hover {
+    background: rgba(255, 0, 0, 0.3);
+}
+
+.close-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: rgba(255, 255, 255, 0.7);
+}
+
+.close-btn:hover svg {
+    fill: rgba(255, 255, 255, 1);
+}
+
+/* 响应式调整 */
+@media (max-width: 300px) {
+    .widget {
+        border-radius: 10px;
+    }
+
+    .cover-section {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .vinyl-record {
+        width: 60px;
+        height: 60px;
+    }
+
+    .controls-section {
+        padding: 0 10px 10px 10px;
+    }
+
+    .control-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .volume-slider {
+        width: 60px;
+    }
+}
