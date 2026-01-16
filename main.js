@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Tray, Menu, globalShortcut } = require('electron');
 const path = require('path');
 const fs = require('fs');
+const { exec } = require('child_process');
 
 // 添加全局错误处理
 process.on('uncaughtException', (error) => {
@@ -35,6 +36,83 @@ function getIconPath() {
   // 如果没有找到图标文件，返回null（使用默认图标）
   console.log('No icon file found, using default icon');
   return null;
+}
+
+// 设置应用程序音量的函数（通过控制视频元素的 volume）
+function setApplicationVolume(volume) {
+  // volume 范围: 0.0 - 1.0
+  if (!audioWindow || audioWindow.isDestroyed()) {
+    return;
+  }
+
+  // 通过 executeJavaScript 设置视频元素的 volume
+  audioWindow.webContents.executeJavaScript(`
+    (function() {
+      const videos = document.querySelectorAll('video');
+      if (videos.length === 0) {
+        return { success: false, reason: 'no_videos' };
+      }
+
+      let setCount = 0;
+      videos.forEach((video) => {
+        try {
+          video.volume = ${volume};
+          setCount++;
+        } catch (e) {
+          console.error('Failed to set volume:', e);
+        }
+      });
+
+      return { success: setCount > 0, count: setCount };
+    })();
+  `).then((result) => {
+    if (result && result.success) {
+      // 通知UI更新音量显示
+      mainWindow.webContents.send('volume-changed', volume);
+    } else {
+      // 如果失败，使用轮询方式重试
+      retrySetVolume(volume, 5);
+    }
+  }).catch(err => {
+    console.error('Failed to set volume:', err);
+    // 重试
+    retrySetVolume(volume, 5);
+  });
+}
+
+// 重试设置音量的函数
+function retrySetVolume(volume, maxRetries) {
+  let retries = 0;
+  const retryInterval = setInterval(() => {
+    retries++;
+
+    if (!audioWindow || audioWindow.isDestroyed()) {
+      clearInterval(retryInterval);
+      return;
+    }
+
+    audioWindow.webContents.executeJavaScript(`
+      const videos = document.querySelectorAll('video');
+      if (videos.length > 0) {
+        videos.forEach(video => {
+          video.volume = ${volume};
+        });
+        return true;
+      }
+      return false;
+    `).then((success) => {
+      if (success) {
+        clearInterval(retryInterval);
+        mainWindow.webContents.send('volume-changed', volume);
+      } else if (retries >= maxRetries) {
+        clearInterval(retryInterval);
+      }
+    }).catch(err => {
+      if (retries >= maxRetries) {
+        clearInterval(retryInterval);
+      }
+    });
+  }, 1000); // 每秒重试一次
 }
 
 function createWindow() {
@@ -115,27 +193,11 @@ function createWindow() {
   });
 
   ipcMain.on('set-volume', (event, volume) => {
-    if (audioWindow && !audioWindow.isDestroyed()) {
-      // 通过executeJavaScript设置B站视频的音量
-      audioWindow.webContents.executeJavaScript(`
-        const videos = document.querySelectorAll('video');
-        videos.forEach(video => {
-          video.volume = ${volume};
-        });
-        console.log('Volume set to:', ${volume});
-      `).catch(err => {
-        console.error('Failed to set volume:', err);
-      });
-
-      // 通知UI更新音量显示
-      mainWindow.webContents.send('volume-changed', volume);
-    }
+    // 使用新的音量控制函数
+    setApplicationVolume(volume);
   });
 
   ipcMain.on('close-app', () => {
-    // #region agent log - IPC close-app received
-    console.log('IPC: close-app received, quitting application');
-    // #endregion
     app.quit();
   });
 

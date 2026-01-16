@@ -68,127 +68,31 @@ class LofiWidget {
     }
 
     bindEvents() {
-        // #region agent log - Event binding start
-        fetch('http://127.0.0.1:7242/ingest/7b916209-3140-4bbd-af5f-9e476231375a', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            sessionId: 'debug-session',
-            runId: 'initial',
-            hypothesisId: 'EVENT_BINDING',
-            location: 'widget.js:76',
-            message: 'Starting event binding',
-            data: {
-              playPauseBtnFound: !!this.playPauseBtn,
-              volumeSliderFound: !!this.volumeSlider,
-              closeBtnFound: !!this.closeBtn,
-              lofiWidgetAvailable: !!window.lofiWidget
-            },
-            timestamp: Date.now()
-          })
-        }).catch(() => {});
-        // #endregion
-
         // 播放/暂停按钮
         this.playPauseBtn.addEventListener('click', () => {
-            // #region agent log - Play button clicked
-            fetch('http://127.0.0.1:7242/ingest/7b916209-3140-4bbd-af5f-9e476231375a', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                sessionId: 'debug-session',
-                runId: 'initial',
-                hypothesisId: 'BUTTON_CLICK',
-                location: 'widget.js:78',
-                message: 'Play/pause button clicked',
-                data: { currentState: this.isPlaying, isReady: this.isReady },
-                timestamp: Date.now()
-              })
-            }).catch(() => {});
-            // #endregion
             this.togglePlayPause();
         });
 
         // 音量滑块
         this.volumeSlider.addEventListener('input', (e) => {
             const volume = parseFloat(e.target.value);
-            // #region agent log - Volume slider changed
-            fetch('http://127.0.0.1:7242/ingest/7b916209-3140-4bbd-af5f-9e476231375a', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                sessionId: 'debug-session',
-                runId: 'initial',
-                hypothesisId: 'VOLUME_SLIDER',
-                location: 'widget.js:98',
-                message: 'Volume slider changed',
-                data: { newVolume: volume },
-                timestamp: Date.now()
-              })
-            }).catch(() => {});
-            // #endregion
             this.setVolume(volume);
         });
 
         // 关闭按钮
         this.closeBtn.addEventListener('click', () => {
-            // #region agent log - Close button clicked
-            fetch('http://127.0.0.1:7242/ingest/7b916209-3140-4bbd-af5f-9e476231375a', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                sessionId: 'debug-session',
-                runId: 'initial',
-                hypothesisId: 'CLOSE_BUTTON',
-                location: 'widget.js:113',
-                message: 'Close button clicked',
-                data: {},
-                timestamp: Date.now()
-              })
-            }).catch(() => {});
-            // #endregion
             this.closeApp();
         });
 
         // 监听来自主进程的状态变化
         if (window.lofiWidget) {
             window.lofiWidget.onPlayStateChange((isPlaying) => {
-                // #region agent log - Play state changed callback
-                fetch('http://127.0.0.1:7242/ingest/7b916209-3140-4bbd-af5f-9e476231375a', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    sessionId: 'debug-session',
-                    runId: 'initial',
-                    hypothesisId: 'PLAY_STATE_CALLBACK',
-                    location: 'widget.js:126',
-                    message: 'Play state changed callback received',
-                    data: { isPlaying },
-                    timestamp: Date.now()
-                  })
-                }).catch(() => {});
-                // #endregion
                 this.isPlaying = isPlaying;
                 this.updatePlayButton();
                 this.updateVinylAnimation();
             });
 
             window.lofiWidget.onVolumeChange((volume) => {
-                // #region agent log - Volume changed callback
-                fetch('http://127.0.0.1:7242/ingest/7b916209-3140-4bbd-af5f-9e476231375a', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    sessionId: 'debug-session',
-                    runId: 'initial',
-                    hypothesisId: 'VOLUME_CALLBACK',
-                    location: 'widget.js:143',
-                    message: 'Volume changed callback received',
-                    data: { volume },
-                    timestamp: Date.now()
-                  })
-                }).catch(() => {});
-                // #endregion
                 this.currentVolume = volume;
                 this.updateVolumeSlider();
             });
