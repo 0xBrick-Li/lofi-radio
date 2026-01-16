@@ -71,7 +71,7 @@ class LofiWidget {
             loading: 'rgba(255, 183, 77, 0.9)',  // 温暖橙色
             ready: 'rgba(255, 218, 185, 0.9)',   // 奶油色
             error: 'rgba(244, 67, 54, 0.9)',     // 柔和红色
-            info: 'rgba(139, 92, 46, 0.9)'       // 复古棕色
+            info: 'rgba(255, 218, 185, 0.9)'       // 奶油色
         };
 
         this.statusIndicator.textContent = message;
