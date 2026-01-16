@@ -6,18 +6,24 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
+    background: transparent;
+    /* 确保在所有平台上圆角正确渲染 */
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
 }
 
 /* 整个小部件可拖拽 - 深靛蓝色磨砂玻璃效果 */
 .widget {
     width: 100vw;
     height: 100vh;
-    border-radius: 24px;
+    /* 统一四个角的弧度 - 所有角都是24px */
+    border-radius: 24px 24px 24px 24px;
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
@@ -26,9 +32,9 @@ body {
     backdrop-filter: blur(28px) saturate(140%);
     -webkit-backdrop-filter: blur(28px) saturate(140%);
     background:
-        /* 深靛蓝色渐变基底 */
-        radial-gradient(circle at 30% 70%, rgba(31, 41, 55, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 70% 30%, rgba(17, 24, 39, 0.12) 0%, transparent 60%),
+        /* 深靛蓝色渐变基底 - 调整为更对称的分布 */
+        radial-gradient(circle at 25% 75%, rgba(31, 41, 55, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 75% 25%, rgba(17, 24, 39, 0.12) 0%, transparent 60%),
         radial-gradient(circle at 50% 50%, rgba(75, 85, 99, 0.08) 0%, transparent 80%),
         /* 主色调 - 深靛蓝色 */
         linear-gradient(135deg,
@@ -37,16 +43,18 @@ body {
             rgba(17, 24, 39, 0.9) 100%);
     border: 1px solid rgba(148, 163, 184, 0.15);
 
-    /* 柔和的内发光和深邃投影 - 营造悬浮感和厚重感 */
+    /* 增强的内发光和深邃投影 - 营造真正的悬浮感和厚重感 */
     box-shadow:
         /* 内发光 - 营造深度 */
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-        /* 柔和外投影 - 增强悬浮感 */
-        0 20px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+        /* 强化的外投影 - 替代系统阴影 */
+        0 32px 64px rgba(0, 0, 0, 0.4),
+        0 16px 32px rgba(0, 0, 0, 0.3),
         0 8px 16px rgba(0, 0, 0, 0.2),
-        /* 微妙的蓝调投影 */
-        0 0 60px rgba(59, 130, 246, 0.08);
+        /* 微妙的蓝调投影 - 增强氛围 */
+        0 0 80px rgba(59, 130, 246, 0.12),
+        0 0 120px rgba(30, 42, 59, 0.15);
 
     /* 窗口拖拽 - 确保整个区域可拖拽 */
     -webkit-app-region: drag;

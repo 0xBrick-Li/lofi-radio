@@ -33,3 +33,11 @@ contextBridge.exposeInMainWorld('lofiWidget', {
     });
   }
 });
+
+// 通用的 Electron API（用于测试窗口等）
+contextBridge.exposeInMainWorld('electronAPI', {
+  // 关闭窗口
+  closeWindow: () => {
+    ipcRenderer.send('close-app');
+  }
+});

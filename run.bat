@@ -3,6 +3,28 @@ echo ========================================
 echo    Lofi Radio Widget Launcher
 echo ========================================
 echo.
+echo Select mode:
+echo 1. Normal Lofi Radio Widget
+echo 2. Test Rounded Window Effect
+echo.
+set /p choice="Enter your choice (1 or 2): "
+
+if "%choice%"=="2" goto :test_rounded
+if "%choice%"=="1" goto :normal_app
+goto :invalid_choice
+
+:invalid_choice
+echo Invalid choice. Please enter 1 or 2.
+echo.
+pause
+exit /b 1
+
+:test_rounded
+echo.
+echo ========================================
+echo    Testing Rounded Window Effect
+echo ========================================
+echo.
 echo Checking system requirements...
 echo.
 
@@ -63,6 +85,9 @@ if exist "node_modules" (
     echo [OK] Dependencies installed successfully
 )
 
+goto :normal_app
+
+:normal_app
 echo.
 echo ========================================
 echo Starting Lofi Radio Widget...
@@ -81,6 +106,50 @@ echo Waiting 3 seconds for audio to load...
 timeout /t 3 /nobreak >nul
 echo.
 npm start
+goto :end
+
+:test_rounded
+REM 检查 node_modules 是否存在
+echo.
+if exist "node_modules" (
+    echo [OK] Dependencies already installed
+) else (
+    echo Installing dependencies...
+    echo This may take a few minutes...
+    echo.
+    npm install
+    if %errorlevel% neq 0 (
+        echo.
+        echo [ERROR] Failed to install dependencies!
+        echo.
+        echo Possible solutions:
+        echo 1. Check your internet connection
+        echo 2. Try running as administrator
+        echo 3. Delete node_modules folder and try again
+        echo.
+        goto :error
+    )
+    echo.
+    echo [OK] Dependencies installed successfully
+)
+
+echo.
+echo ========================================
+echo Testing Rounded Window Effect...
+echo ========================================
+echo.
+echo The test window should appear in the CENTER of your screen.
+echo This window tests the custom rounded corners and shadows.
+echo.
+echo Test features:
+echo - Rounded corners (24px border-radius)
+echo - Custom CSS shadows (no system shadows)
+echo - Window dragging (except buttons)
+echo - Clickable buttons
+echo.
+echo Press Ctrl+C to close or click the X button.
+echo.
+node main.js --test-rounded
 
 goto :end
 

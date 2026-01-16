@@ -136,19 +136,18 @@ function createWindow() {
       },
       // 桌面小部件配置
       frame: false, // 无边框
-      transparent: true, // 透明背景
+      transparent: true, // 开启透明模式
+      backgroundColor: '#00000000', // 将背景色设置为完全透明
       alwaysOnTop: true, // 置顶显示
       skipTaskbar: false, // 显示在任务栏
       resizable: false, // 不可调整大小
       minimizable: false, // 不可最小化
       maximizable: false, // 不可最大化
       closable: true, // 可关闭
-      // 毛玻璃效果 (Windows 10+)
-      vibrancy: 'appearance-based', // 或 'light', 'dark'
-      // 圆角效果
-      roundedCorners: true,
-      // 阴影
-      hasShadow: true
+      // 禁用系统阴影，由前端CSS绘制圆角阴影
+      hasShadow: false,
+      // 圆角效果（在某些系统上可能仍然需要）
+      roundedCorners: true
     });
 
     console.log('Widget window created successfully');
@@ -158,8 +157,17 @@ function createWindow() {
     return;
   }
 
-  // 加载桌面小部件UI
-  mainWindow.loadFile('index.html');
+  // 检查是否是测试模式
+  const isTestMode = process.argv.includes('--test-rounded');
+
+  // 加载对应的UI文件
+  if (isTestMode) {
+    mainWindow.loadFile('test-rounded-window.html');
+    console.log('Loading test rounded window...');
+  } else {
+    mainWindow.loadFile('index.html');
+    console.log('Loading normal lofi radio widget...');
+  }
 
   // 设置窗口位置到屏幕中央（确保可见）
   const { screen } = require('electron');
