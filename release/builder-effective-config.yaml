@@ -1,0 +1,26 @@
+directories:
+  output: release
+  buildResources: build
+appId: com.lofi-radio-player.app
+productName: Lofi Radio Player
+files:
+  - filter:
+      - '**/*'
+      - '!release/**/*'
+      - '!*.md'
+      - '!build/**/*'
+      - '!*.ps1'
+      - '!*.bat'
+win:
+  icon: icon.ico
+  target: nsis
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: icon.ico
+  uninstallerIcon: icon.ico
+  installerHeaderIcon: icon.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Lofi Radio Player
+electronVersion: 40.0.0
