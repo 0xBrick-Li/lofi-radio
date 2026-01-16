@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Tray, Menu, globalShortcut } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 // 添加全局错误处理
 process.on('uncaughtException', (error) => {
@@ -19,13 +20,34 @@ let mainWindow; // 桌面小部件窗口
 let audioWindow; // 隐藏的音频窗口
 let tray;
 
+// 获取图标路径的辅助函数
+function getIconPath() {
+  const iconFormats = ['icon.ico', 'icon.png', 'icon-256.png', 'icon-128.png', 'icon-64.png', 'icon-32.png', 'icon-16.png'];
+  
+  for (const iconFile of iconFormats) {
+    const iconPath = path.join(__dirname, iconFile);
+    if (fs.existsSync(iconPath)) {
+      console.log(`Using icon: ${iconFile}`);
+      return iconPath;
+    }
+  }
+  
+  // 如果没有找到图标文件，返回null（使用默认图标）
+  console.log('No icon file found, using default icon');
+  return null;
+}
+
 function createWindow() {
   try {
+    // 获取图标路径（优先使用.ico，如果没有则使用.png或.svg）
+    const iconPath = getIconPath();
+
     // 创建浏览器窗口 - 桌面小部件样式
     mainWindow = new BrowserWindow({
       width: 300,
       height: 150,
       show: true, // 显示窗口（不再隐形）
+      icon: iconPath, // 设置窗口图标（任务栏图标）
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
@@ -139,10 +161,14 @@ function createWindow() {
 // 创建隐藏的音频窗口
 function createAudioWindow() {
   try {
+    // 获取图标路径
+    const iconPath = getIconPath();
+
     audioWindow = new BrowserWindow({
       width: 1200,
       height: 800,
       show: false, // 完全隐藏
+      icon: iconPath, // 设置窗口图标
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
@@ -214,9 +240,25 @@ function createAudioWindow() {
 // 创建系统托盘
 function createTray() {
   try {
-    // 在 Windows 上简化托盘图标创建，避免复杂的图标生成
-    // 使用一个空的 Buffer 或者跳过图标创建
-    tray = new Tray(Buffer.alloc(0)); // 创建一个空的托盘图标
+    // 获取图标路径
+    const iconPath = getIconPath();
+    
+    if (iconPath) {
+      tray = new Tray(iconPath);
+      console.log(`Tray icon loaded from: ${iconPath}`);
+    } else {
+      // 如果没有图标文件，创建一个简单的默认图标
+      console.log('Creating default tray icon');
+      // 使用应用图标作为备用
+      const defaultIcon = path.join(__dirname, 'icon.png');
+      if (fs.existsSync(defaultIcon)) {
+        tray = new Tray(defaultIcon);
+      } else {
+        // 最后的备用方案：使用空Buffer（会显示默认图标）
+        tray = new Tray(Buffer.alloc(0));
+        console.log('Using default system tray icon');
+      }
+    }
 
   const contextMenu = Menu.buildFromTemplate([
     {

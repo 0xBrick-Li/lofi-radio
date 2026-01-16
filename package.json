@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron . --disable-dev-tools",
     "dev": "electron .",
-    "debug": "electron . --enable-logging --log-level=0"
+    "debug": "electron . --enable-logging --log-level=0",
+    "generate-icon": "node generate-icon.js"
   },
   "keywords": ["electron", "music-player", "lofi", "bilibili"],
   "author": "",

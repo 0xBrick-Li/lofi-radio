@@ -97,6 +97,30 @@ npm run debug
 - `styles.css` - 毛玻璃效果和动画样式
 - `widget.js` - 前端交互逻辑
 - `run.bat` - Windows快速启动脚本
+- `icon.svg` - SVG格式的应用图标
+- `generate-icon.js` - 图标生成脚本
+
+## 🎨 图标设置
+
+应用已配置支持自定义图标，用于：
+- **Windows任务栏图标**
+- **系统托盘图标**（右下角）
+
+### 快速设置图标
+
+1. **运行图标设置助手**：
+   ```bash
+   setup-icon.bat
+   ```
+
+2. **如果没有 icon.ico 文件**：
+   - 运行 `npm run generate-icon` 生成 SVG 图标
+   - 访问 https://convertio.co/zh/svg-ico/ 将 `icon.svg` 转换为 `icon.ico`
+   - 将转换后的 `icon.ico` 放到项目根目录
+
+3. **详细说明**：查看 `图标使用说明.md`
+
+应用会自动检测并使用 `icon.ico` 文件作为图标。如果没有找到，会使用系统默认图标。
 
 ## 技术实现
 
