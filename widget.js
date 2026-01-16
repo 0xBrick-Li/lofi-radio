@@ -61,6 +61,8 @@ class LofiWidget {
             pointer-events: none;
             z-index: 1000;
             box-sizing: border-box;
+            /* 确保不影响窗口拖拽 */
+            -webkit-app-region: drag;
         `;
         document.body.appendChild(indicator);
         return indicator;

@@ -332,8 +332,7 @@ body, html {
     font-weight: 400;
     letter-spacing: 0.5px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    /* 确保不影响拖拽 */
-    -webkit-app-region: no-drag;
+    /* 确保不影响拖拽 - 只设置pointer-events，保留拖拽功能 */
     pointer-events: none; /* 不响应鼠标事件，保持拖拽 */
 }
 
