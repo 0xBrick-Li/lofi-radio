@@ -30,6 +30,16 @@ class LofiWidget {
         setTimeout(() => this.hideStatus(), 2000);
 
         console.log('Lofi Widget initialized');
+
+        // 初始化专注时长管理器（如果存在）
+        setTimeout(() => {
+            if (window.focusTimeManager) {
+                window.focusTimeManager.isPlaying = this.isPlaying;
+                if (this.isPlaying) {
+                    window.focusTimeManager.startTimer();
+                }
+            }
+        }, 100);
     }
 
     createStatusIndicator() {

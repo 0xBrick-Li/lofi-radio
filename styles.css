@@ -27,6 +27,8 @@ body, html {
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
+    /* 增加底部内边距，确保底部文字有足够的呼吸感 */
+    padding-bottom: 14px;
 
     /* 深靛蓝色磨砂玻璃效果 - 营造深夜专注氛围 */
     backdrop-filter: blur(28px) saturate(140%);
@@ -319,6 +321,25 @@ body, html {
         0 4px 12px rgba(0, 0, 0, 0.4),
         0 0 0 2px rgba(255, 218, 185, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 今日专注时长显示 */
+.focus-time-display {
+    text-align: center;
+    margin-top: 0px; /* 进一步减少上方空白，营造更紧凑的视觉流 */
+    font-size: 12px;
+    color: rgba(248, 250, 252, 0.6); /* 半透明米白色 */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    /* 确保不影响拖拽 */
+    -webkit-app-region: no-drag;
+    pointer-events: none; /* 不响应鼠标事件，保持拖拽 */
+}
+
+.focus-time-display #focusTime {
+    font-weight: 500;
+    color: rgba(255, 218, 185, 0.7); /* 略微强调数字 */
 }
 
 /* 关闭按钮 - 精致复古设计 */

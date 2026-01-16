@@ -75,6 +75,8 @@ Select mode:
 - `preload.js` - 预加载脚本（已添加通用 API）
 - `test-rounded-window.html` - 圆角窗口测试页面
 - `run.bat` - 启动脚本（已添加测试选项）
+- `renderer.js` - 专注时长统计功能（新增）
+- `index.html` - 主界面（已添加专注时长显示）
 
 ## 注意事项
 
