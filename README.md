@@ -104,6 +104,7 @@ https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
 
 - 推特：[@SecretMaple24](https://twitter.com/SecretMaple24)
 - TG：https://t.me/SecretZ24
+> Secret 来自周杰伦的电影《不能说的秘密》
 
 ### 过往经历
 * 前大厂**财务计划分析**实习生 / 会计师事务所审计助理
