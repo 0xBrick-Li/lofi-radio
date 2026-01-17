@@ -3,6 +3,7 @@
 https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
 
 ---
+![Lofi-Radio-gifshow](https://github.com/user-attachments/assets/ab515c7b-f294-4bf8-97ab-a099b0a68312)
 
 **几乎所有手机都有灵动岛功能，也有大量的专注计时器软件，电脑为什么没有呢？**
 
