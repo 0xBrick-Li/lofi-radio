@@ -138,6 +138,7 @@ dist
 # Build output directories
 dist/
 release/
+dist_green/
 
 *.exe
 *.asar

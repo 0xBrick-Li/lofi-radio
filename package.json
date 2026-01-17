@@ -1,7 +1,7 @@
 {
   "name": "lofi-radio-player",
-  "version": "1.0.0",
-  "description": "隐形桌面音乐播放器 - Bilibili Lofi Radio",
+  "version": "1.0.2",
+  "description": "Lofi Radio Player",
   "main": "main.js",
   "homepage": "./",
   "scripts": {
@@ -29,12 +29,16 @@
   "build": {
     "appId": "com.lofi-radio-player.app",
     "productName": "Lofi Radio Player",
+    "electronLanguages": [
+      "zh-CN",
+      "en"
+    ],
     "directories": {
-      "output": "release"
+      "output": "dist_green"
     },
     "files": [
       "**/*",
-      "!release/**/*",
+      "!dist_green/**/*",
       "!*.md",
       "!build/**/*",
       "!*.ps1",
@@ -42,7 +46,9 @@
     ],
     "win": {
       "icon": "icon.ico",
-      "target": "nsis"
+      "target": [
+        "dir"
+      ]
     },
     "nsis": {
       "oneClick": false,
