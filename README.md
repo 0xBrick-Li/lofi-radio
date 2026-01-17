@@ -2,6 +2,8 @@
 **点击这里下载（绿色版免安装）
 https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
 
+---
+
 **几乎所有手机都有灵动岛功能，也有大量的专注计时器软件，电脑为什么没有呢？**
 
 * 这是一个基于 Electron 的桌面小部件音乐播放器，具有毛玻璃效果的精美 UI。
