@@ -99,6 +99,7 @@
 
 - 推特：[@SecretMaple24](https://twitter.com/SecretMaple24)
 - TG：https://t.me/SecretZ24
+- 寻找Web3实习机会中
 
 ### 过往经历
 * 前大厂**财务计划分析**实习生 / 会计师事务所审计助理
