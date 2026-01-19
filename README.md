@@ -1,4 +1,11 @@
 # Lofi Radio Player
+**点击这里下载（绿色版免安装）
+https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
+
+不需要本地音源，不需要选歌单。下载后什么都不用做，直接打开即可收听使用
+
+---
+![Lofi-Radio-gifshow](https://github.com/user-attachments/assets/ab515c7b-f294-4bf8-97ab-a099b0a68312)
 
 **几乎所有手机都有灵动岛功能，也有大量的专注计时器软件，电脑为什么没有呢？**
 
@@ -100,6 +107,8 @@
 - 推特：[@SecretMaple24](https://twitter.com/SecretMaple24)
 - TG：https://t.me/SecretZ24
 - 寻找Web3实习机会中
+
+> Secret 来自周杰伦的电影《不能说的秘密》
 
 ### 过往经历
 * 前大厂**财务计划分析**实习生 / 国内头部会计师事务所**审计助理**
