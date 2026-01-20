@@ -23,9 +23,10 @@ https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
   - 普通模式：旋转发光黑胶唱片质感。
   - Mini 模式：仿灵动岛设计，小巧玲珑。
 - **桌面陪伴**：可以挂在屏幕上的任何地方，安静陪伴不打扰。
-**- 快捷键：ALT + Q 一键暂停/播放音乐**  -- windows
 
-**- 快捷键：option + Q 一键暂停/播放音乐**  -- macOS
+**- Windows 快捷键：ALT + Q 一键暂停/播放音乐**
+
+**- MacOS 快捷键：Option + Q 一键暂停/播放音乐** 
 
 ## 界面展示：普通模式 & Mini模式 自由切换！
 
@@ -123,6 +124,7 @@ https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
 * 做过10+数据分析项目，会写Python/SQL，现在在Dune练习Web3数分(SQL取数，搭Dashboard等）曾经参加过很多数学建模/数据分析高校竞赛
  
 ---
+###  macOS support - @0xBrick-Li  Web3 实习计划学员 (ETH Panda/LXDAO) 
 
 ## 开源贡献：
 
