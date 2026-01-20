@@ -119,4 +119,4 @@ https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
  
 ---
 
-点个 **Star（收藏）** 支持一下，谢谢谢谢谢谢蟹蟹。求求了
+右上角点个 **Star（收藏）** 支持一下，谢谢谢谢谢谢蟹蟹。求求了
