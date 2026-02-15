@@ -1,3 +1,4 @@
+# 新版本正在加紧开发中！请稍等
 # Lofi Radio Player
 **点击这里下载（绿色版免安装）
 https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
