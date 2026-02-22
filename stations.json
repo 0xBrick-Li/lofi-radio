@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Lofi Girl",
+    "category": "Lo-Fi",
+    "type": "bilibili",
+    "url": "https://live.bilibili.com/27519423?live_from=84001&spm_id_from=333.337.0.0",
+    "style1": "Lo-fi",
+    "style2": "Chill",
+    "scene": "学习 / 工作"
+  },
+  {
+    "name": "Lofi Box",
+    "category": "Lo-Fi",
+    "type": "mp3",
+    "url": "https://boxradio-edge-00.streamafrica.net/lofi",
+    "style1": "Lo-fi",
+    "style2": "Chill",
+    "scene": "学习 / 工作"
+  },
+  {
+    "name": "Jazz Box",
+    "category": "Jazz",
+    "type": "mp3",
+    "url": "https://boxradio-edge-01.streamafrica.net/jazz",
+    "style1": "Jazz",
+    "style2": "Smooth",
+    "scene": "放松 / 阅读"
+  },
+  {
+    "name": "Chillwave",
+    "category": "Chill",
+    "type": "mp3",
+    "url": "https://boxradio-edge-00.streamafrica.net/chillwave",
+    "style1": "Chill",
+    "style2": "Electronic",
+    "scene": "阅读 / 放松"
+  },
+  {
+    "name": "Rain Sounds",
+    "category": "Ambient",
+    "type": "mp3",
+    "url": "https://boxradio-edge-01.streamafrica.net/rain",
+    "style1": "Ambient",
+    "style2": "Nature",
+    "scene": "冥想 / 助眠"
+  },
+  {
+    "name": "Rap",
+    "category": "Hip-Hop",
+    "type": "mp3",
+    "url": "https://boxradio-edge-00.streamafrica.net/rap",
+    "style1": "Hip-Hop",
+    "style2": "Rap",
+    "scene": "娱乐 / 运动"
+  },
+  {
+    "name": "ChillSky",
+    "category": "Lo-Fi",
+    "type": "mp3",
+    "url": "http://chill.radioca.st/stream",
+    "style1": "Chill",
+    "style2": "Electronic",
+    "scene": "阅读 / 放松"
+  },
+  {
+    "name": "Groove Salad",
+    "category": "Chill",
+    "type": "mp3",
+    "url": "https://ice1.somafm.com/groovesalad-128-mp3",
+    "style1": "Downtempo",
+    "style2": "Ambient",
+    "scene": "专注 / 编码"
+  },
+  {
+    "name": "ASP",
+    "category": "Chill",
+    "type": "mp3",
+    "url": "http://radio.stereoscenic.com/asp-s",
+    "style1": "Ambient",
+    "style2": "Sleep",
+    "scene": "冥想 / 助眠"
+  },
+  {
+    "name": "Paradise",
+    "category": "Chill",
+    "type": "mp3",
+    "url": "https://stream.radioparadise.com/mellow-128",
+    "style1": "Eclectic",
+    "style2": "Alternative",
+    "scene": "冲浪 / 休闲"
+  },
+  {
+    "name": "Jazz Groove",
+    "category": "Jazz",
+    "type": "mp3",
+    "url": "http://west-mp3-128.streamthejazzgroove.com/stream",
+    "style1": "Jazz",
+    "style2": "Smooth",
+    "scene": "写作 / 阅读"
+  },
+  {
+    "name": "SmoothJazz",
+    "category": "Jazz",
+    "type": "mp3",
+    "url": "http://smoothjazz.cdnstream1.com/2585_128.mp3",
+    "style1": "Smooth Jazz",
+    "style2": "Instrumental",
+    "scene": "办公 / 放松"
+  },
+  {
+    "name": "Swiss Classic",
+    "category": "Classical",
+    "type": "mp3",
+    "url": "http://stream.srg-ssr.ch/m/rsc_de/mp3_128",
+    "style1": "Classical",
+    "style2": "Orchestral",
+    "scene": "深度 / 专注"
+  },
+  {
+    "name": "BBC 3",
+    "category": "Classical",
+    "type": "m3u8",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
+    "style1": "Classical",
+    "style2": "Arts",
+    "scene": "鉴赏 / 探索"
+  },
+  {
+    "name": "KEXP",
+    "category": "Rock/Indie",
+    "type": "mp3",
+    "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
+    "style1": "Indie",
+    "style2": "Alternative",
+    "scene": "发现 / 娱乐"
+  },
+  {
+    "name": "Drone Zone",
+    "category": "Chill",
+    "type": "mp3",
+    "url": "https://ice1.somafm.com/dronezone-128-mp3",
+    "style1": "Ambient",
+    "style2": "Drone",
+    "scene": "沉浸 / 催眠"
+  }
+]
