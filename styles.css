@@ -694,6 +694,7 @@ body, html {
     transform: scale(0.95);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 20px;
+    -webkit-app-region: no-drag;
 }
 
 .station-list-panel.active {
@@ -712,6 +713,7 @@ body, html {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     flex-shrink: 0;
+    -webkit-app-region: no-drag;
 }
 
 .panel-header h3 {
@@ -723,7 +725,6 @@ body, html {
 }
 
 .panel-back-btn {
-    -webkit-app-region: no-drag;
     position: absolute;
     left: 0;
     width: 22px;
@@ -763,19 +764,25 @@ body, html {
     padding-right: 4px;
     padding-bottom: 16px;
     -webkit-overflow-scrolling: touch;
+    -webkit-app-region: no-drag;
 }
 
 .station-list-container::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 
 .station-list-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
 }
 
 .station-list-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
+    background: rgba(255, 218, 185, 0.4);
+    border-radius: 3px;
+}
+
+.station-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 218, 185, 0.6);
 }
 
 .station-list-ul {
@@ -783,6 +790,7 @@ body, html {
     padding: 0;
     padding-bottom: 12px;
     margin: 0;
+    -webkit-app-region: no-drag;
 }
 
 .station-list-item {
@@ -797,6 +805,8 @@ body, html {
     justify-content: space-between;
     align-items: center;
     -webkit-app-region: no-drag;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .station-list-item:last-child {
@@ -814,12 +824,37 @@ body, html {
     font-weight: 500;
 }
 
-.station-category {
-    font-size: 10px;
-    opacity: 0.6;
+.station-tags {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+    -webkit-app-region: no-drag;
+}
+
+.station-tag {
+    font-size: 11px;
+    opacity: 0.7;
     background: rgba(255, 255, 255, 0.1);
     padding: 2px 6px;
     border-radius: 4px;
+    -webkit-app-region: no-drag;
+}
+
+.station-tag.custom-tag {
+    background: rgba(255, 218, 185, 0.2);
+    color: rgba(255, 218, 185, 0.95);
+    border: 1px solid rgba(255, 218, 185, 0.3);
+}
+
+.station-tag.scene-tag {
+    background: rgba(100, 149, 237, 0.2);
+    color: rgba(173, 216, 230, 0.95);
+    border: 1px solid rgba(100, 149, 237, 0.3);
+}
+
+.station-name {
+    -webkit-app-region: no-drag;
+    font-weight: 600;
 }
 
 .cover-section,
@@ -835,6 +870,16 @@ body, html {
     -webkit-app-region: no-drag;
 }
 
+.list-open .cover-section *,
+.list-open .info-section,
+.list-open .info-section *,
+.list-open .title-section,
+.list-open .title-section *,
+.list-open .main-title,
+.list-open .subtitle {
+    -webkit-app-region: no-drag !important;
+}
+
 .list-open .close-btn,
 .list-open .mini-mode-btn,
 .list-open .station-list-btn {
@@ -843,22 +888,5 @@ body, html {
 }
 
 .status-indicator {
-    -webkit-app-region: drag;
-}
-
-.station-list-panel {
     -webkit-app-region: no-drag;
-}
-
-.status-indicator {
-    -webkit-app-region: drag;
-}
-
-.station-list-panel .panel-back-btn,
-.station-list-panel .station-list-item,
-.station-list-panel .station-list-item *,
-.station-list-panel .station-name,
-.station-list-panel .station-category {
-    -webkit-app-region: no-drag;
-    pointer-events: auto;
 }

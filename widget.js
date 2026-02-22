@@ -215,12 +215,39 @@ class LofiWidget {
             nameSpan.className = 'station-name';
             nameSpan.textContent = station.name;
             
-            const categorySpan = document.createElement('span');
-            categorySpan.className = 'station-category';
-            categorySpan.textContent = station.category;
+            const tagsContainer = document.createElement('div');
+            tagsContainer.className = 'station-tags';
+            
+            if (station.style1) {
+                const tag1 = document.createElement('span');
+                tag1.className = 'station-tag';
+                tag1.textContent = station.style1;
+                tagsContainer.appendChild(tag1);
+            }
+            
+            if (station.style2) {
+                const tag2 = document.createElement('span');
+                tag2.className = 'station-tag';
+                tag2.textContent = station.style2;
+                tagsContainer.appendChild(tag2);
+            }
+            
+            if (station.custom) {
+                const customTag = document.createElement('span');
+                customTag.className = 'station-tag custom-tag';
+                customTag.textContent = station.custom;
+                tagsContainer.appendChild(customTag);
+            }
+            
+            if (station.scene) {
+                const sceneTag = document.createElement('span');
+                sceneTag.className = 'station-tag scene-tag';
+                sceneTag.textContent = station.scene;
+                tagsContainer.appendChild(sceneTag);
+            }
             
             li.appendChild(nameSpan);
-            li.appendChild(categorySpan);
+            li.appendChild(tagsContainer);
             
             li.addEventListener('click', () => {
                 if (window.lofiWidget && window.lofiWidget.changeStation) {
