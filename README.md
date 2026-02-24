@@ -10,7 +10,6 @@
 
 ![v1.1.0-showcase](./images/v1.1.0-showcase.gif)
 
----
 
 **几乎所有手机都有灵动岛功能，也有大量的专注计时器软件，电脑为什么没有呢？**
 
@@ -26,7 +25,6 @@
 - 全局快捷键：一键暂停，不打断专注
 - 专注计时：记录你的每一次深度工作
 
----
 
 ## 界面展示
 
@@ -36,7 +34,6 @@
 | <img src="./images/v1.1.0-normal-website.png" width="400"/> | <img src="./images/v1.1.0-mini-website.png" width="400"/> |
 | *黑胶唱片质感* | *小巧玲珑，不占空间* |
 
----
 
 ## 功能特点
 
@@ -157,10 +154,9 @@ ALT+Q (Windows) / Option+Q (macOS)
 - 在 Web 3实习计划课程中分享「AI 工作流在 Web 3求职中的应用」
   - [📄 点击查看 PPT](https://docs.google.com/presentation/d/1bJFdOmN5H0ICQGwBQjLDiVX5EAdm5zexdrxPWqmdjCA/edit?usp=sharing) · [🐦 点击查看推文](https://x.com/SecretMaple24/status/2013461261116199083)
 
----
-
 - Web3 + AI 黑客松获奖作品「Seed-Hunter」- 产品 / 前端 / 分享
   - [📄 点击查看 PPT](https://docs.google.com/presentation/d/1VrepMGkB-hYMw1VezH1e5D-eaPr5UUsalVrfQlCAGg4/edit?usp=sharing) · [💻 点击查看 GitHub](https://github.com/labilio/Seed-Hunter)
+
 
 ### 联系我
 
@@ -209,6 +205,4 @@ npm start
 
 欢迎提交 Issue 和 Pull Request！
 
----
-
-右上角点个 **Star（收藏）** 支持一下，感谢！
+右上角点个 **Star（收藏）** 支持一下，谢谢！

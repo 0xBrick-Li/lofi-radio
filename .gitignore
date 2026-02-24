@@ -140,6 +140,10 @@ dist/
 release/
 dist_green/
 
+# AI coding assistants
+.trae/
+.cursor/
+
 *.exe
 *.asar
 
