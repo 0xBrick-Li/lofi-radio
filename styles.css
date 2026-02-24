@@ -465,8 +465,8 @@ body, html {
 /* Mini模式播放按钮 */
 .mini-play-btn {
     -webkit-app-region: no-drag;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border: none;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
@@ -485,13 +485,13 @@ body, html {
 }
 
 .mini-play-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(59, 130, 246, 0.2);
     transform: scale(1.1);
 }
 
 .mini-play-btn svg {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     fill: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
 }
@@ -533,15 +533,14 @@ body, html {
     display: none; /* 默认隐藏，只在mini模式下显示 */
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /* Mini模式下显示还原按钮 */
 .widget.mini-mode .mini-expand-btn {
     display: flex;
-}
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 .mini-expand-btn:hover {
@@ -553,6 +552,7 @@ body, html {
     width: 10px;
     height: 10px;
     fill: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
 }
 
 /* 播放状态视觉反馈 - 温暖lofi风格 */
@@ -642,16 +642,24 @@ body, html {
     }
 }
 
+/*
+ * 电台选择按钮 - 小圆形贴合圆角设计
+ * 
+ * 设计说明：
+ * - 按钮缩小为 20x20px 的圆形
+ * - 放置在窗口圆角中心位置，完美贴合圆角
+ * - 不遮挡黑胶唱片
+ */
 .station-list-btn {
     -webkit-app-region: no-drag;
     position: absolute;
-    top: 12px;
-    left: 12px;
-    width: 28px;
-    height: 28px;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -666,12 +674,12 @@ body, html {
 .station-list-btn:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .station-list-btn svg {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     fill: rgba(255, 255, 255, 0.6);
     transition: all 0.3s ease;
 }
@@ -731,6 +739,23 @@ body, html {
     z-index: 100;
 }
 
+/*
+ * 【关键】面板激活时的动态 no-drag 设置
+ * 
+ * 只有在面板激活时，列表项才设置 no-drag，使其可点击
+ * 面板隐藏时，这些元素没有 no-drag，继承父元素的 drag，窗口可拖拽
+ * 
+ * 这解决了 Mini 模式下某些电台无法拖拽的问题：
+ * - Mini 模式窗口变小后，列表项仍然存在于 DOM 中
+ * - 如果静态设置 no-drag，会阻止 Mini 模式下的拖拽
+ */
+.station-list-panel.active .station-list-item,
+.station-list-panel.active .station-tags,
+.station-list-panel.active .station-tag,
+.station-list-panel.active .station-name {
+    -webkit-app-region: no-drag;
+}
+
 .panel-header {
     display: flex;
     justify-content: center;
@@ -745,7 +770,7 @@ body, html {
 .panel-header h3 {
     margin: 0;
     color: rgba(255, 218, 185, 0.9);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
@@ -793,7 +818,7 @@ body, html {
 }
 
 .station-list-container::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .station-list-container::-webkit-scrollbar-track {
@@ -820,11 +845,16 @@ body, html {
 /*
  * 电台列表项
  * 
- * 这里设置 no-drag 是正确的，因为：
- * - 列表项需要可点击交互
- * - 面板显示时（.active），这些元素需要能响应点击
- * - 面板隐藏时，父元素 .station-list-panel 设置了 pointer-events: none
- *   鼠标事件会穿透到 .widget，子元素的 no-drag 不会被触发，drag 生效
+ * 【重要】动态设置 -webkit-app-region：
+ * 
+ * ❌ 错误做法：静态设置 no-drag
+ *    .station-list-item { -webkit-app-region: no-drag; }
+ *    原因：即使面板隐藏，no-drag 仍然生效
+ *         当 Mini 模式窗口覆盖到列表项位置时，会阻止拖拽！
+ * 
+ * ✅ 正确做法：只在面板激活时设置 no-drag（见下方 .station-list-panel.active 规则）
+ *    原因：面板隐藏时，列表项继承父元素的 drag → 窗口可拖拽
+ *         面板显示时，列表项设置 no-drag → 列表可点击
  */
 .station-list-item {
     padding: 6px 14px;
@@ -837,7 +867,7 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    -webkit-app-region: no-drag;
+    /* 注意：不在这里设置 -webkit-app-region，使用动态规则 */
     width: 100%;
     box-sizing: border-box;
 }
@@ -860,15 +890,13 @@ body, html {
 /*
  * 电台标签容器和标签
  * 
- * 设置 no-drag 是正确的，因为：
- * - 标签需要可点击（虽然目前没有点击事件）
- * - 继承自 .station-list-item 的 no-drag，保持一致性
+ * 【重要】不在这里静态设置 no-drag，使用动态规则
+ * 原因同 .station-list-item
  */
 .station-tags {
     display: flex;
     gap: 4px;
     flex-shrink: 0;
-    -webkit-app-region: no-drag;
 }
 
 .station-tag {
@@ -877,7 +905,6 @@ body, html {
     background: rgba(255, 255, 255, 0.1);
     padding: 2px 6px;
     border-radius: 4px;
-    -webkit-app-region: no-drag;
 }
 
 .station-tag.custom-tag {
@@ -892,8 +919,13 @@ body, html {
     border: 1px solid rgba(100, 149, 237, 0.3);
 }
 
+/*
+ * 电台名称
+ * 
+ * 【重要】不在这里静态设置 no-drag，使用动态规则
+ * 原因同 .station-list-item
+ */
 .station-name {
-    -webkit-app-region: no-drag;
     font-weight: 600;
 }
 

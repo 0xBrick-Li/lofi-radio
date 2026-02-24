@@ -1,7 +1,6 @@
 const { app, BrowserWindow, Tray, Menu, globalShortcut, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const { exec } = require('child_process');
 
 const configPath = path.join(app.getPath('userData'), 'config.json');
 
@@ -434,9 +433,12 @@ function createTray() {
       }
     }
 
+  const isMac = process.platform === 'darwin';
+  const shortcutKey = isMac ? 'Option+Q' : 'Alt+Q';
+
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: '播放/暂停 (Alt+Q)',
+      label: `播放/暂停 (${shortcutKey})`,
       click: () => {
         if (audioWindow && !audioWindow.isDestroyed()) {
           const isCurrentlyMuted = audioWindow.webContents.isAudioMuted();
@@ -455,7 +457,7 @@ function createTray() {
     }
   ]);
 
-    tray.setToolTip('Lofi Radio Player - Alt+Q 播放/暂停');
+    tray.setToolTip(`Lofi Radio Player - ${shortcutKey} 播放/暂停`);
     tray.setContextMenu(contextMenu);
 
     console.log('Tray created successfully');
@@ -465,8 +467,11 @@ function createTray() {
 }
 
 function registerGlobalShortcut() {
-  const success = globalShortcut.register('Alt+Q', () => {
-    console.log('Alt+Q pressed - toggling mute state');
+  const isMac = process.platform === 'darwin';
+  const shortcutKey = isMac ? 'Option+Q' : 'Alt+Q';
+
+  const success = globalShortcut.register(shortcutKey, () => {
+    console.log(`${shortcutKey} pressed - toggling mute state`);
     if (audioWindow && !audioWindow.isDestroyed()) {
       const isCurrentlyMuted = audioWindow.webContents.isAudioMuted();
       audioWindow.webContents.setAudioMuted(!isCurrentlyMuted);
@@ -477,9 +482,9 @@ function registerGlobalShortcut() {
   });
 
   if (success) {
-    console.log('Global shortcut Alt+Q registered successfully');
+    console.log(`Global shortcut ${shortcutKey} registered successfully`);
   } else {
-    console.log('Failed to register global shortcut Alt+Q');
+    console.log(`Failed to register global shortcut ${shortcutKey}`);
   }
 }
 

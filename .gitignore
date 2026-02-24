@@ -142,3 +142,21 @@ dist_green/
 
 *.exe
 *.asar
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor directories
+.cursor/
+.trae/
+.idea/
+.vscode/
+
+# Reference code (contributor's code for reference only)
+Prcode/
+
+# Development documentation
+MAC_RELEASE_NOTES.md
+ROUNDED_WINDOW_README.md
