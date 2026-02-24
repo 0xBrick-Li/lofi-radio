@@ -1,134 +1,196 @@
 # Lofi Radio Player
-**点击这里下载（绿色版免安装）
-https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio**
 
-不需要本地音源，不需要选歌单。下载后什么都不用做，直接打开即可收听使用
+**[点击这里下载（绿色版免安装）](https://github.com/labilio/lofi-radio/releases/tag/Lofi-Radio)**
 
 > 💡 **macOS 用户提示**：首次打开可能需要右键点击应用 → 选择"打开"，或在系统设置中允许运行
 
+![](https://img.shields.io/github/v/release/labilio/lofi-radio)
+![](https://img.shields.io/github/stars/labilio/lofi-radio)
+![](https://img.shields.io/github/license/labilio/lofi-radio)
+
+![v1.1.0-showcase](./images/v1.1.0-showcase.gif)
+
 ---
-![Lofi-Radio-gifshow](https://github.com/user-attachments/assets/ab515c7b-f294-4bf8-97ab-a099b0a68312)
 
 **几乎所有手机都有灵动岛功能，也有大量的专注计时器软件，电脑为什么没有呢？**
 
-* 这是一个基于 Electron 的桌面小部件音乐播放器，具有毛玻璃效果的精美 UI。
-* 它可以永远挂在屏幕前台，提供学习计时功能。
-* Lofi音乐被科学家认为是最适合专注工作学习的音乐类型。LofiGirl电台也在全球拥有众多粉丝
+## 简介
 
+这是一个精简小巧的桌面音乐播放器，挂在屏幕上。
+**就像把咖啡店的背景音乐搬进你的书房**
+
+不需要本地音源，不需要选歌单。下载后直接打开即可收听。
+
+- 两种模式：黑胶唱片 / 灵动岛风格
+- 16 种电台：不仅是 Lofi，学习工作时的沉浸陪伴
+- 全局快捷键：一键暂停，不打断专注
+- 专注计时：记录你的每一次深度工作
+
+---
+
+## 界面展示
+
+| 普通模式 | Mini 模式 (灵动岛风格) |
+| :---: | :---: |
+| <img src="./images/v1.1.0-normal-mode.png" width="400"/> | <img src="./images/v1.1.0-mini-mode.png" width="400"/> |
+| <img src="./images/v1.1.0-normal-website.png" width="400"/> | <img src="./images/v1.1.0-mini-website.png" width="400"/> |
+| *黑胶唱片质感* | *小巧玲珑，不占空间* |
+
+---
 
 ## 功能特点
 
 - **沉浸体验**：7x24 小时无限播放 Lofi 音乐（有助于专注工作学习的安静音乐）。
+
 - **双形态切换**：
-  - 普通模式：旋转发光黑胶唱片质感。
-  - Mini 模式：仿灵动岛设计，小巧玲珑。
-- **桌面陪伴**：可以挂在屏幕上的任何地方，安静陪伴不打扰。
+  - 普通模式：旋转发光黑胶唱片质感
+  - Mini 模式：仿灵动岛设计，小巧玲珑
 
-**- Windows 快捷键：ALT + Q 一键暂停/播放音乐**
+- **桌面陪伴**：可以挂在屏幕上的任何地方，安静陪伴不打扰
 
-**- MacOS 快捷键：Option + Q 一键暂停/播放音乐** 
+- **多电台支持**：内置 16 个精选电台，点击左上角按钮即可切换，覆盖多种音乐风格
+  - 🎧 **Lo-Fi / Chill**：Lofi Girl、Lofi Box、Chill Sky、Chill Wave、Groove Salad、ASP、Paradise、Drone Zone
+  - 🎷 **Jazz**：Jazz Box，Jazz Groove、Jazz Smooth
+  - 🎻 **Classical**：Swiss Classic，BBC 3
+  - 🎤 **Hip-Hop / Indie**：Rap、KEXP
+  - 🌧️ **Ambient / Nature**：Rain Sounds
 
-## 界面展示：普通模式 & Mini模式 自由切换！
+- **全局快捷键**：ALT+Q (Windows) / Option+Q (macOS) 一键暂停，不打断专注
 
-## 界面展示
+- **专注计时**：记录今日专注时长，每日自动重置
 
-| 普通模式 (Normal Mode) | Mini 模式 (灵动岛风格) |
-| :---: | :---: |
-| <img src="./images/普通模式.jpg" width="400"/> | <img src="./images/mini模式.jpg" width="400"/> |
-| <img src="./images/github 普通模式展示.jpg" width="400"/> | <img src="./images/github mini模式展示.jpg" width="400"/> |
-| *黑胶唱片质感* | *小巧玲珑，不占空间* |
-
-
----
-## 你为什么要做这个？为什么不用 QQ 音乐？
-
-因为你要的不是「听歌」，  而是「专注」。
-
-- **无限专注，而不是循环歌单**
-
-  7×24 小时自动播放 **不重复** 的 Lofi 音乐  
-  > QQ 音乐 / 网易云采用歌单逻辑。歌曲有限（200–300 首）很快就会听腻
->
-
-
-- **随时可控，而不是手动操作**
-
-  全局快捷键**ALT+Q**  一键暂停 / 恢复 （macOS为**option+Q** ）
-  > 不需要切回浏览器 ，专注不中断
-
->
-
-- **即开即用，而不是环境负担**
-
-  不翻墙，不用去Youtube和Spotify，也能听到 LofiGirl Radio  
-  > 任意一台联网电脑 打开就能用
-
->
-
-- **没有画面，才是真正的专注**
-
-  没有动画，没有弹幕，没有干扰  
-  > 你不是来“消费内容” 也不是来看LofiGirl的写字女孩动画的  
-  > 你是来把事情做完的
->
----
-- **弥补市场空缺：** **学习APP和音乐APP为什么不能放在一起？**
-
-  既然来听专注音乐，本质目的就是专注  
-  > 那为什么不顺手做一个  
-  > 类似 Forest / 番茄 To Do 的学习计时器？
-
->
-
-
-- **弥补市场空缺：** **电脑上为什么不能有灵动岛？**
-
-  灵动岛是一个很好的交互设计，但它只存在于手机上  
-  > 如果把播放器 + 计时器 ，塞进一个电脑端的小胶囊  
-  > 这件事本身就很有想象力
-
----
- AI 已经成为 Web3 求职的关键能力。
- 
- ETH Bruce老师说过：在未来，用和不用AI的人，将成为两个物种
-- **贴近真实需求，而不是造玩具**
-
-  > 这是一次完整的 Vibe Coding 产品实践  
-  > 从想法到落地，而不是只在黑客松写 Demo
->
-- **系统性训练，而不是单点学习**
-  
-  > 做项目可以同时练习：Debug 能力 + UI / UX 设计能力 + 产品思维与用户视角。写一个清晰的Readme也是一个重要技能。
->
-- **把结果留下来，而不是只写代码**
-  
-  > 用一份结构清晰的 README.md  
-  > 记录设计决策、权衡与思考
+- **记住偏好**：自动记住上次选择的电台，下次启动自动播放
 
 ---
 
-## 关于我 Secret： Web3 实习计划学员 (ETH Panda/LXDAO) 
+## 电台列表
 
-- 推特：[@SecretMaple24](https://twitter.com/SecretMaple24)
-- TG：https://t.me/SecretZ24
-- 寻找Web3实习机会中
+| 电台 | 风格标签 | 适用场景 | 特点 |
+|------|---------|---------|------|
+| **Lofi Girl** | Lo-fi / Chill | 学习 / 工作 | 最稳定，Bilibili 直播源 |
+| **Lofi Box** | Lo-fi / Chill | 学习 / 工作 | 高性能 |
+| **Chill Sky** | Chill / Electro | 阅读 | 放松氛围 |
+| **Chill Wave** | Chill / Electro | 放松 | 电子氛围 |
+| **Groove Salad** | Chill / Ambient | 编码 | 专注必备 |
+| **ASP** | Ambient / Sleep | 助眠 | 深度放松 |
+| **Paradise** | Chill / Alt | 休闲 | 多元风格 |
+| **Drone Zone** | Ambient / Deep | 催眠 | 持续低音 |
+| **Rain Sounds** | Ambient / Nature | 助眠 | 自然白噪音 |
+| **Jazz Box** | Jazz / Smooth | 阅读 | 柔和爵士 |
+| **Jazz Groove** | Jazz / Groove | 写作 | 律动爵士 |
+| **Jazz Smooth** | Jazz / Mellow | 办公 | 轻柔爵士 |
+| **Swiss Classic** | Classical / Symphony | 专注 | 交响乐 |
+| **BBC 3** | Classical / Arts | 探索 | 艺术古典 |
+| **Rap** | Hip-Hop / Beats | 运动 | 节奏驱动 |
+| **KEXP** | Indie / Alt | 娱乐 | 独立音乐 |
 
-> Secret 来自周杰伦的电影《不能说的秘密》
+---
+
+## 你为什么要用这个？
+
+### 不是在「听歌」，而是在「营造环境」
+
+打开它，就像走进一家安静的咖啡店  
+> 只有音乐，没有歌词，没有弹幕，没有干扰  
+> 你是来把事情做完的，不是来消费内容的
+
+### 16 种电台，而不是一个歌单
+
+7x24 小时自动播放，歌曲不重复  
+> QQ 音乐 / 网易云是歌单逻辑，听完就腻  
+> 16 种风格，总有一款适合你当下的状态
+
+### 随时可控，一键暂停
+
+ALT+Q (Windows) / Option+Q (macOS)  
+> 不需要切出窗口，专注不中断
+
+### 即开即用，不设门槛
+
+不翻墙，不用 Youtube / Spotify  
+> 任意一台联网电脑，打开就能用
+
+### 精简小巧，才是真正的沉浸
+
+没有歌词滚动，没有MV，没有社交功能  
+> 一个小部件挂在屏幕上，安静陪伴  
+> 像咖啡店的背景音乐那样自然存在
+
+### 弥补市场空缺：学习 APP 和音乐 APP 为什么不能放在一起？
+
+既然来听专注音乐，本质目的是专注  
+> 那为什么不顺手做一个  
+> 类似 Forest / 番茄 To Do 的学习计时器？
+
+### 弥补市场空缺：电脑上为什么不能有灵动岛？
+
+灵动岛是一个很好的交互设计，但它只存在于手机上  
+> 如果把播放器 + 计时器，塞进一个电脑端的小胶囊  
+> 这件事本身就很有想象力
+
+---
+
+## 关于我
+
+**Secret** - AI Product Manager Intern / Web3 实习计划学员 (ETH Panda/LXDAO)
+
+> 正在寻找有趣的项目和合作机会
+
+**我能提供：** 产品思维 / 独立开发 / 数据洞察 / Web3 & AI 基础知识分享
+
+**开放：** 项目合作 / 行业交流 / 开源贡献
 
 ### 过往经历
-* 前大厂**财务计划分析**实习生 / 国内头部会计师事务所**审计助理**
-* B站**220 万播放量** 游戏区频道，作品获游戏行业从业者普遍认可
-* 独立设计美术虚拟产品并上架微信 **我做的虚拟产品被使用超 22 万次**
-* 完全从 0 到 1 创建电商品牌，全流程单干，3 个月 GMV 破万，单日最高 1000+ 订单
-* 做过10+数据分析项目，会写Python/SQL，现在在Dune练习Web3数分(SQL取数，搭Dashboard等）曾经参加过很多数学建模/数据分析高校竞赛
- 
+
+- 前大厂**财务计划分析**实习生 / 国内头部会计师事务所**审计助理**
+- B站**220 万播放量** 频道，作品获行业从业者普遍认可
+- 独立设计美术虚拟产品并上架微信，**我做的虚拟产品被使用超 22 万次**
+- 完全从 0 到 1 创建电商品牌，全流程单干，3 个月 GMV 破万，单日最高 1500+ 订单
+
+### 联系我
+
+- 推特：[@SecretMaple24](https://twitter.com/SecretMaple24)
+- Telegram：https://t.me/SecretZ24
+
 ---
 
-## 开源贡献：
+## 开源贡献
 
-###  macOS support - @0xBrick-Li  Web3 实习计划学员 (ETH Panda/LXDAO) 
+### 多电台切换功能 - [@WEP-56](https://github.com/WEP-56)
+
+设计了多电台切换功能，包括：
+- 电台列表界面（点击左上角按钮展开）
+- 16 个精选电台的配置与流媒体播放支持
+- HTML5 Audio + HLS.js 播放器架构
+- 电台偏好记忆功能
+
+### macOS 支持 - [@0xBrick-Li](https://github.com/0xBrick-Li)
+
+Web3 实习计划学员 (ETH Panda/LXDAO)
 
 ---
 
+## 技术栈
 
-右上角点个 **Star（收藏）** 支持一下，谢谢谢谢谢谢蟹蟹。求求了
+- Electron - 跨平台桌面应用框架
+- HTML5 Audio + HLS.js - 流媒体播放
+- CSS3 - 毛玻璃效果与动画
+
+---
+
+## 本地运行
+
+```bash
+git clone https://github.com/labilio/lofi-radio.git
+cd lofi-radio
+npm install
+npm start
+```
+
+---
+
+欢迎提交 Issue 和 Pull Request！
+
+---
+
+右上角点个 **Star（收藏）** 支持一下，感谢！

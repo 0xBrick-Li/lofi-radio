@@ -158,6 +158,12 @@ class FocusTimeManager {
         }
 
         // 更新Mini模式的显示
+        const miniDisplayElement = document.getElementById('miniFocusTime');
+        if (miniDisplayElement) {
+            miniDisplayElement.textContent = this.focusTime;
+        }
+
+        // 更新Widget的data属性（备用）
         const widget = document.getElementById('widget');
         if (widget) {
             widget.setAttribute('data-focus-text', `Focus: ${this.focusTime} min`);
