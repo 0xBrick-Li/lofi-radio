@@ -130,7 +130,7 @@ ALT+Q (Windows) / Option+Q (macOS)
 
 ---
 
-## 关于我
+## 关于我 Secret
 
 **Secret** - AI Product Manager Intern / Web3 实习计划学员 (ETH Panda/LXDAO)
 
@@ -140,6 +140,8 @@ ALT+Q (Windows) / Option+Q (macOS)
 
 **开放：** 项目合作 / 行业交流 / 开源贡献
 
+**其他作品：**
+
 ### 过往经历
 
 - 前大厂**财务计划分析**实习生 / 国内头部会计师事务所**审计助理**
@@ -147,9 +149,22 @@ ALT+Q (Windows) / Option+Q (macOS)
 - 独立设计美术虚拟产品并上架微信，**我做的虚拟产品被使用超 22 万次**
 - 完全从 0 到 1 创建电商品牌，全流程单干，3 个月 GMV 破万，单日最高 1500+ 订单
 
+---
+
+- 在 ETH Panda 分享：「零基础文科生，如何在简历中体现 AI 能力」
+  - [📄 点击查看 PPT](https://docs.google.com/presentation/d/11h1x5ciXJ3uPj3sjIpNfmYRb0f-DNVhn6D4ln-grBUQ/edit?usp=sharing) · [🐦 点击查看推文](https://x.com/SecretMaple24/status/2020911982568931396)
+
+- 在 Web 3实习计划课程中分享「AI 工作流在 Web 3求职中的应用」
+  - [📄 点击查看 PPT](https://docs.google.com/presentation/d/1bJFdOmN5H0ICQGwBQjLDiVX5EAdm5zexdrxPWqmdjCA/edit?usp=sharing) · [🐦 点击查看推文](https://x.com/SecretMaple24/status/2013461261116199083)
+
+---
+
+- Web3 + AI 黑客松获奖作品「Seed-Hunter」- 产品 / 前端 / 分享
+  - [📄 点击查看 PPT](https://docs.google.com/presentation/d/1VrepMGkB-hYMw1VezH1e5D-eaPr5UUsalVrfQlCAGg4/edit?usp=sharing) · [💻 点击查看 GitHub](https://github.com/labilio/Seed-Hunter)
+
 ### 联系我
 
-- 推特：[@SecretMaple24](https://twitter.com/SecretMaple24)
+- 推特：[@SecretMaple24](https://twitter.com/SecretMaple24) | 定期更新 Web3 和 AI 相关内容
 - Telegram：https://t.me/SecretZ24
 
 ---
@@ -166,7 +181,10 @@ ALT+Q (Windows) / Option+Q (macOS)
 
 ### macOS 支持 - [@0xBrick-Li](https://github.com/0xBrick-Li)
 
-Web3 实习计划学员 (ETH Panda/LXDAO)
+- 代码适配：快捷键 Option+Q、全局快捷键跨平台兼容
+- 构建配置：DMG 安装包、macOS 打包配置
+
+[@0xBrick-Li](https://github.com/0xBrick-Li) - Web3 实习计划学员 (ETH Panda/LXDAO)
 
 ---
 
