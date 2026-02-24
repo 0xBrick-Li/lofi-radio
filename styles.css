@@ -62,7 +62,16 @@ body, html {
         0 0 80px rgba(59, 130, 246, 0.12),
         0 0 120px rgba(30, 42, 59, 0.15);
 
-    /* 窗口拖拽 - 确保整个区域可拖拽 */
+    /*
+     * 窗口拖拽设置
+     * 
+     * 正确做法：在根容器设置 drag，让整个窗口可拖拽
+     * 
+     * 注意事项：
+     * - 子元素会继承 drag 属性
+     * - 需要交互的子元素必须显式设置 no-drag
+     * - 隐藏的元素（opacity: 0）如果设置了 no-drag，仍然会阻止拖拽！
+     */
     -webkit-app-region: drag;
 }
 
@@ -74,6 +83,7 @@ body, html {
     gap: 20px;
     min-height: 120px;
     box-sizing: border-box;
+    -webkit-app-region: drag;
 }
 
 /* 黑胶唱片样式 - 精致复古质感 */
@@ -221,12 +231,14 @@ body, html {
     color: rgba(248, 250, 252, 0.9); /* 米白色文字 */
     min-width: 0; /* 防止 flex 子项溢出 */
     box-sizing: border-box;
+    -webkit-app-region: drag;
 }
 
 .title-section {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    -webkit-app-region: drag;
 }
 
 .main-title {
@@ -237,6 +249,7 @@ body, html {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     letter-spacing: -0.02em;
     line-height: 1.2;
+    -webkit-app-region: drag;
 }
 
 .subtitle {
@@ -247,6 +260,7 @@ body, html {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.01em;
     line-height: 1.3;
+    -webkit-app-region: drag;
 }
 
 /* 音量控制 - 精致现代设计 */
@@ -329,19 +343,16 @@ body, html {
 
 /* 今日专注时长显示 */
 .focus-time-display {
-    position: absolute;
-    bottom: 6px;
-    width: 100%;
     text-align: center;
-    margin-top: 0;
-    font-size: 11px;
+    margin-top: 0px; /* 进一步减少上方空白，营造更紧凑的视觉流 */
+    font-size: 12px;
     color: rgba(248, 250, 252, 0.6); /* 半透明米白色 */
     font-weight: 400;
     letter-spacing: 0.5px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     /* 确保不影响拖拽 - 只设置pointer-events，保留拖拽功能 */
     pointer-events: none; /* 不响应鼠标事件，保持拖拽 */
-    z-index: 50;
+    -webkit-app-region: drag;
 }
 
 .focus-time-display #focusTime {
@@ -454,8 +465,8 @@ body, html {
 /* Mini模式播放按钮 */
 .mini-play-btn {
     -webkit-app-region: no-drag;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border: none;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
@@ -474,13 +485,13 @@ body, html {
 }
 
 .mini-play-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(59, 130, 246, 0.2);
     transform: scale(1.1);
 }
 
 .mini-play-btn svg {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     fill: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
 }
@@ -541,6 +552,7 @@ body, html {
     width: 10px;
     height: 10px;
     fill: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
 }
 
 /* 播放状态视觉反馈 - 温暖lofi风格 */
@@ -601,5 +613,364 @@ body, html {
 
     .volume-control {
         padding: 6px 10px;
+        gap: 10px;
+        max-width: 150px;
     }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .close-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .mini-mode-btn {
+        top: 10px;
+        right: 40px; /* 10px(close-btn right) + 24px(close-btn width) + 6px(间距) */
+        width: 24px;
+        height: 24px;
+    }
+
+    .mini-mode-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/*
+ * 电台选择按钮 - 小圆形贴合圆角设计
+ * 
+ * 设计说明：
+ * - 按钮缩小为 20x20px 的圆形
+ * - 放置在窗口圆角中心位置，完美贴合圆角
+ * - 不遮挡黑胶唱片
+ */
+.station-list-btn {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.station-list-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.station-list-btn svg {
+    width: 12px;
+    height: 12px;
+    fill: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.station-list-btn:hover svg {
+    fill: rgba(255, 255, 255, 0.95);
+}
+
+.widget.mini-mode .station-list-btn {
+    display: none;
+}
+
+/*
+ * 电台列表面板
+ * 
+ * 【重要】关于 -webkit-app-region 的正确设置：
+ * 
+ * ❌ 错误做法：在这里设置 -webkit-app-region: no-drag
+ *    原因：面板虽然隐藏（opacity: 0），但 no-drag 仍然生效
+ *         会导致 Mini 模式下窗口无法拖拽！
+ * 
+ * ✅ 正确做法：不设置 -webkit-app-region，让面板继承父元素的 drag
+ *    原因：面板隐藏时，drag 生效 → 窗口可拖拽
+ *         面板显示时，子元素（.station-list-item 等）设置 no-drag → 列表可点击
+ * 
+ * 【关键原理】
+ * - opacity: 0 和 pointer-events: none 不能覆盖 -webkit-app-region
+ * - -webkit-app-region 是 Electron 特有属性，与 CSS 的 pointer-events 是两个独立系统
+ * - 子元素的 no-drag 设置会阻止父元素的 drag，即使子元素是隐藏的
+ */
+.station-list-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    z-index: -1;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+    /* 注意：这里不设置 -webkit-app-region，继承父元素的 drag */
+}
+
+.station-list-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    z-index: 100;
+}
+
+/*
+ * 【关键】面板激活时的动态 no-drag 设置
+ * 
+ * 只有在面板激活时，列表项才设置 no-drag，使其可点击
+ * 面板隐藏时，这些元素没有 no-drag，继承父元素的 drag，窗口可拖拽
+ * 
+ * 这解决了 Mini 模式下某些电台无法拖拽的问题：
+ * - Mini 模式窗口变小后，列表项仍然存在于 DOM 中
+ * - 如果静态设置 no-drag，会阻止 Mini 模式下的拖拽
+ */
+.station-list-panel.active .station-list-item,
+.station-list-panel.active .station-tags,
+.station-list-panel.active .station-tag,
+.station-list-panel.active .station-name {
+    -webkit-app-region: no-drag;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.panel-header h3 {
+    margin: 0;
+    color: rgba(255, 218, 185, 0.9);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.panel-back-btn {
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+}
+
+.panel-back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.panel-back-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.panel-back-btn:hover svg {
+    fill: rgba(255, 255, 255, 0.95);
+}
+
+.station-list-container {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 4px;
+    padding-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.station-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.station-list-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.station-list-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 218, 185, 0.4);
+    border-radius: 3px;
+}
+
+.station-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 218, 185, 0.6);
+}
+
+.station-list-ul {
+    list-style: none;
+    padding: 0;
+    padding-bottom: 12px;
+    margin: 0;
+}
+
+/*
+ * 电台列表项
+ * 
+ * 【重要】动态设置 -webkit-app-region：
+ * 
+ * ❌ 错误做法：静态设置 no-drag
+ *    .station-list-item { -webkit-app-region: no-drag; }
+ *    原因：即使面板隐藏，no-drag 仍然生效
+ *         当 Mini 模式窗口覆盖到列表项位置时，会阻止拖拽！
+ * 
+ * ✅ 正确做法：只在面板激活时设置 no-drag（见下方 .station-list-panel.active 规则）
+ *    原因：面板隐藏时，列表项继承父元素的 drag → 窗口可拖拽
+ *         面板显示时，列表项设置 no-drag → 列表可点击
+ */
+.station-list-item {
+    padding: 6px 14px;
+    margin-bottom: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 注意：不在这里设置 -webkit-app-region，使用动态规则 */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.station-list-item:last-child {
+    margin-bottom: 0;
+}
+
+.station-list-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.station-list-item.active {
+    background: rgba(255, 218, 185, 0.15);
+    color: rgba(255, 218, 185, 1);
+    font-weight: 500;
+}
+
+/*
+ * 电台标签容器和标签
+ * 
+ * 【重要】不在这里静态设置 no-drag，使用动态规则
+ * 原因同 .station-list-item
+ */
+.station-tags {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.station-tag {
+    font-size: 11px;
+    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.station-tag.custom-tag {
+    background: rgba(255, 218, 185, 0.2);
+    color: rgba(255, 218, 185, 0.95);
+    border: 1px solid rgba(255, 218, 185, 0.3);
+}
+
+.station-tag.scene-tag {
+    background: rgba(100, 149, 237, 0.2);
+    color: rgba(173, 216, 230, 0.95);
+    border: 1px solid rgba(100, 149, 237, 0.3);
+}
+
+/*
+ * 电台名称
+ * 
+ * 【重要】不在这里静态设置 no-drag，使用动态规则
+ * 原因同 .station-list-item
+ */
+.station-name {
+    font-weight: 600;
+}
+
+/*
+ * 列表打开状态下的特殊处理
+ * 
+ * 【问题背景】
+ * .cover-section 的子元素（.info-section, .title-section 等）都设置了 drag
+ * 当列表打开时，这些元素虽然隐藏（opacity: 0），但仍然会遮挡下面的列表
+ * 导致列表顶部区域无法点击
+ * 
+ * 【解决方案】
+ * 强制将这些隐藏元素的 app-region 设置为 no-drag
+ * 这样它们就不会阻挡下面列表的点击事件
+ * 
+ * 【注意事项】
+ * - 必须使用 !important 覆盖原有的 drag 设置
+ * - 需要列举所有子元素，新增元素时容易遗漏
+ * - 这是"脆弱平衡"的一部分，修改时需谨慎
+ */
+.list-open .cover-section,
+.list-open .focus-time-display {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    -webkit-app-region: no-drag;
+}
+
+.list-open .cover-section *,
+.list-open .info-section,
+.list-open .info-section *,
+.list-open .title-section,
+.list-open .title-section *,
+.list-open .main-title,
+.list-open .subtitle {
+    -webkit-app-region: no-drag !important;
+}
+
+.list-open .close-btn,
+.list-open .mini-mode-btn,
+.list-open .station-list-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.status-indicator {
+    /* 不设置 -webkit-app-region，让它继承父元素的 drag */
 }

@@ -11,7 +11,6 @@
         const player = document.getElementById('player');
         let hls = null;
 
-        // Handle errors
         player.addEventListener('error', (e) => {
             console.error('Audio Error:', player.error);
             if (window.audioPlayer) {
@@ -28,7 +27,6 @@
             }
         });
 
-        // Handle state changes
         player.addEventListener('play', () => {
             if (window.audioPlayer) window.audioPlayer.sendState({ playing: true });
         });
@@ -37,7 +35,6 @@
             if (window.audioPlayer) window.audioPlayer.sendState({ playing: false });
         });
 
-        // Initialize listeners via Preload API
         if (window.audioPlayer) {
             window.audioPlayer.onPlay(() => {
                 player.play().catch(e => console.error('Play failed:', e));
@@ -51,55 +48,46 @@
                 player.volume = Math.max(0, Math.min(1, volume));
             });
 
-            window.audioPlayer.onChangeStation((url) => {
+            window.audioPlayer.onChangeStation((url, type) => {
                 const wasPlaying = !player.paused;
                 
-                // Destroy previous HLS instance if exists
                 if (hls) {
                     hls.destroy();
                     hls = null;
                 }
 
-                if (url.includes('.m3u8') || url.includes('.isml')) {
-                    // HLS Playback
+                if (type === 'm3u8' || url.includes('.m3u8') || url.includes('.isml')) {
                     if (Hls.isSupported()) {
                         hls = new Hls();
                         hls.loadSource(url);
                         hls.attachMedia(player);
                         hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                            if (wasPlaying) player.play().catch(e => console.error('HLS play failed:', e));
+                            player.play().catch(e => console.error('HLS play failed:', e));
                         });
                         hls.on(Hls.Events.ERROR, function(event, data) {
                              if (data.fatal) {
                                 switch (data.type) {
                                 case Hls.ErrorTypes.NETWORK_ERROR:
-                                    console.log('fatal network error encountered, try to recover');
+                                    console.log('fatal network error, try to recover');
                                     hls.startLoad();
                                     break;
                                 case Hls.ErrorTypes.MEDIA_ERROR:
-                                    console.log('fatal media error encountered, try to recover');
+                                    console.log('fatal media error, try to recover');
                                     hls.recoverMediaError();
                                     break;
                                 default:
-                                    // cannot recover
                                     hls.destroy();
                                     break;
                                 }
                             }
                         });
                     } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
-                        // Native HLS support (Safari)
                         player.src = url;
-                        if (wasPlaying) player.play().catch(e => console.error('Native HLS play failed:', e));
+                        player.play().catch(e => console.error('Native HLS play failed:', e));
                     }
                 } else {
-                    // Standard Playback (MP3/AAC)
                     player.src = url;
-                    if (wasPlaying) {
-                        player.play().catch(e => console.error('Play failed after switch:', e));
-                    } else {
-                        player.play().catch(e => console.error('Play failed after switch:', e));
-                    }
+                    player.play().catch(e => console.error('Play failed after switch:', e));
                 }
             });
         }
